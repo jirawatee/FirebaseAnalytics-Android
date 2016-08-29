@@ -1,6 +1,7 @@
 <resources>
 	<string name="app_name">Analytics</string>
-	<string name="btn_property">Set UserProperty</string>
 	<string name="event_predefine">Event Predefine</string>
 	<string name="event_custom">Event Custom</string>
+	<string name="sent_predefine">Predefine event sent.</string>
+	<string name="sent_custom">Custom event sent.</string>
 </resources>
