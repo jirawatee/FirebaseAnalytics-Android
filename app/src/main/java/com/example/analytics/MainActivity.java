@@ -23,6 +23,13 @@ public class MainActivity extends AppCompatActivity {
 		mTextView.setText(String.format("UserProperty: %s", USER_PROPERTY));
 	}
 
+	@Override
+	protected void onResume() {
+		super.onResume();
+		// screen name must be <= 36 characters
+		mFirebaseAnalytics.setCurrentScreen(this, "CurrentScreen: " + getClass().getSimpleName(), null);
+	}
+
 	public void sendPredefineEvent(View view) {
 		Bundle bundle = new Bundle();
 		bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "12345");
@@ -35,8 +42,13 @@ public class MainActivity extends AppCompatActivity {
 	public void sendCustomEvent(View view) {
 		Bundle params = new Bundle();
 		params.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Image");
+
+		// custom parameter must be <= 24 characters
+		// custom value must be <= 36 characters
 		params.putString("image_name", "android.png");
 		params.putString("full_text", "Android 7.0 Nougat");
+
+		// custom event must be <= 32 characters
 		mFirebaseAnalytics.logEvent("share_image", params);
 		mTextView.setText(R.string.sent_custom);
 	}
