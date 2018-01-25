@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		mTextView = (TextView) findViewById(R.id.textview);
+		mTextView = findViewById(R.id.textview);
 
 		mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 		mFirebaseAnalytics.setUserProperty("favorite_food", "Pizza");
@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
 		bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "12345");
 		bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Nougat");
 		bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Image");
+		bundle.putString(FirebaseAnalytics.Param.CURRENCY, "THB");
+		bundle.putString(FirebaseAnalytics.Param.TRANSACTION_ID, "111");
+		bundle.putString(FirebaseAnalytics.Param.VALUE, "300");
 		mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 		mTextView.setText(R.string.sent_predefine);
 	}
